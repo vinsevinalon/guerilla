@@ -3,10 +3,10 @@ import Image from 'next/image';
 
 export default function AboutComponent() {
     return (
-        <div class="py-16 bg-white">
-            <div class="container m-auto px-6 text-gray-600 md:px-12 xl:px-6">
-                <div class="space-y-6 md:space-y-0 md:flex md:gap-6 lg:items-center lg:gap-12">
-                    <div class="md:5/12 lg:w-5/12">
+        <div className="py-16 bg-white">
+            <div className="container m-auto px-6 text-gray-600 md:px-12 xl:px-6">
+                <div className="space-y-6 md:space-y-0 md:flex md:gap-6 lg:items-center lg:gap-12">
+                    <div className="md:5/12 lg:w-5/12">
                         <Image
                             src="/left-bg.png"
                             alt="image"
@@ -15,11 +15,11 @@ export default function AboutComponent() {
                             height={500}
                         />
                     </div>
-                    <div class="md:7/12 lg:w-6/12">
-                        <h2 class="text-2xl text-gray-900 font-bold md:text-4xl">
+                    <div className="md:7/12 lg:w-6/12">
+                        <h2 className="text-2xl text-gray-900 font-bold md:text-4xl">
                             Award wining real estate company in Dubai
                         </h2>
-                        <p class="mt-6 text-gray-600">
+                        <p className="mt-6 text-gray-600">
                             Lorem ipsum dolor, sit amet consectetur adipisicing
                             elit. Eum omnis voluptatem accusantium nemo
                             perspiciatis delectus atque autem! Voluptatum
@@ -27,7 +27,7 @@ export default function AboutComponent() {
                             consequatur! Officiis id consequatur atque
                             doloremque!
                         </p>
-                        <p class="mt-4 text-gray-600">
+                        <p className="mt-4 text-gray-600">
                             {' '}
                             Nobis minus voluptatibus pariatur dignissimos libero
                             quaerat iure expedita at? Asperiores nemo possimus

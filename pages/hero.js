@@ -97,9 +97,9 @@ export default function HeroComponent() {
                     <div className="w-full lg:w-6/12 px-4 ml-auto mr-auto text-center">
                         <div className="pr-12">
                             <h1 className="font-semibold text-5xl">
-                                Your story starts with us.
+                                A home is build with love and dreams
                             </h1>
-                            <p className="mt-4 text-lg text-gray-300">
+                            <p className="mt-4 text-lg">
                                 This is a simple example of a Landing Page you
                                 can build using Tailwind Starter Kit. It
                                 features multiple CSS components based on the

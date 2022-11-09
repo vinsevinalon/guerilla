@@ -5,6 +5,7 @@ import { GraphQLClient, gql } from 'graphql-request';
 import HeroComponent from './hero';
 import AboutComponent from './about';
 import FooterComponent from './footer';
+import { useState, useMemo } from 'react';
 
 export async function getStaticProps() {
     const endpoint = process.env.PREVIEW_ENDPOINT;
@@ -36,7 +37,31 @@ export async function getStaticProps() {
     };
 }
 
+// create a filter function to filter the data by name
+
 export default function Home(data) {
+    const [dataList, setDataList] = useState([]);
+    const [selectedCategory, setSelectedCategory] = useState();
+
+    // Function to get filtered list
+    function getFilteredList() {
+        // Avoid filter when selectedCategory is null
+        if (!selectedCategory) {
+            return dataList;
+        }
+        return dataList.filter(
+            (data) =>
+                data.data.propertyCollection.items.category === selectedCategory
+        );
+    }
+
+    // Avoid duplicate function calls with useMemo
+    var filteredList = useMemo(getFilteredList, [selectedCategory, dataList]);
+
+    function handleCategoryChange(event) {
+        setSelectedCategory(event.target.value);
+    }
+
     return (
         <div className={styles.container}>
             <Head>
@@ -50,6 +75,43 @@ export default function Home(data) {
 
             <main className={styles.main}>
                 <HeroComponent />
+
+                <div className="container relative mx-auto pt-16">
+                    <div className="items-center flex flex-wrap">
+                        <div className="w-full lg:w-6/12 px-4 ml-auto mr-auto text-center">
+                            <div className="pr-12">
+                                <h1 className="font-semibold text-5xl">
+                                    Properties
+                                </h1>
+                                <div className="filter-container">
+                                    <div>Filter by Category:</div>
+                                    <div>
+                                        <select
+                                            name="category-list"
+                                            id="category-list"
+                                            className="border border-gray-300 rounded-md filter-select"
+                                            onChange={handleCategoryChange}
+                                        >
+                                            <option value="">All</option>
+                                            <option value="Outdoor">
+                                                Villa
+                                            </option>
+                                            <option value="Indoor">
+                                                Apartment
+                                            </option>
+                                            <option value="Aquatics">
+                                                Penthouse
+                                            </option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <p className="mt-4 text-lg">
+                                    This is a simple example of a Landing Page
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <div className={styles.grid}>
                     {data.data.propertyCollection.items.map((item) => (
                         <a key={item.id} href="#" className={styles.card}>
